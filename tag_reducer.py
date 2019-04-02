@@ -11,7 +11,7 @@ def read_map_output(file):
     """
     for line in file:
         temp_list = line.strip().split("\t", 1)
-        yield line.strip().split("\t", 1)
+        yield temp_list[0], temp_list[1]
 
 
 def tag_reducer():
@@ -21,8 +21,10 @@ def tag_reducer():
     file = sys.stdin
 
     for category, message in read_map_output(file):
+        #
         # category = temp_list[0]
         # message = temp_list[1]
+        # print(category, message)
         message_parts = message.split("|",1)
         video_id = message_parts[0]
         country = message_parts[1]

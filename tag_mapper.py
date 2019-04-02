@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 import sys
-from signal import signal, SIGPIPE, SIG_DFL
-signal(SIGPIPE,SIG_DFL)
+# from signal import signal, SIGPIPE, SIG_DFL
+# signal(SIGPIPE,SIG_DFL)
 
 def tag_mapper():
     """ This mapper select tags and return the tag-owner information.
@@ -12,7 +12,7 @@ def tag_mapper():
 
     for line in sys.stdin:
         # Clean input and split it
-        parts = line.split(",")
+        parts = line.strip().split(",")
 
         # Check that the line is of the correct format
         # If line is malformed, we ignore the line and continue to the next line
