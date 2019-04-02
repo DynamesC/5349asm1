@@ -18,7 +18,7 @@ def tag_mapper():
           continue
 
         video_id = parts[0]
-        category = parts[4]
+        category = parts[3]
         country = parts[11]
 
             # In hadoop streaming, the output is sys.stdout, thus the print command
