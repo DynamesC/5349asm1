@@ -16,7 +16,7 @@ def tag_reducer():
 
     current_cat = ""
     current_id_country_dict = {}
-    file = open("test", "r")
+    file = sys.stdin
 
     for category, message in read_map_output(file):
         message_parts = message.split("|",1)
