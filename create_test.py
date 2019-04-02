@@ -1,0 +1,10 @@
+file = open("test", "w+")
+
+file.write("a\t1|CHN\n")
+file.write("a\t1|USA\n")
+file.write("a\t2|CHN\n")
+file.write("b\t1|CHN\n")
+file.write("b\t1|USA\n")
+file.write("b\t1|AU\n")
+file.write("c\t1|CHN\n")
+file.write("c\t1|CHN\n")
