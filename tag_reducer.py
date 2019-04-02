@@ -3,12 +3,14 @@
 import sys
 
 
+
 def read_map_output(file):
     """ Return an iterator for key, value pair extracted from file (sys.stdin).
     Input format:  key \t value
     Output format: (key, value)
     """
     for line in file:
+        temp_list = line.strip().split("\t", 1)
         yield line.strip().split("\t", 1)
 
 
@@ -19,6 +21,8 @@ def tag_reducer():
     file = sys.stdin
 
     for category, message in read_map_output(file):
+        # category = temp_list[0]
+        # message = temp_list[1]
         message_parts = message.split("|",1)
         video_id = message_parts[0]
         country = message_parts[1]
