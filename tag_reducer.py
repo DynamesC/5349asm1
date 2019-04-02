@@ -9,7 +9,8 @@ def read_map_output(file):
     Output format: (key, value)
     """
     for line in file:
-        return line.split("\t", 1)
+        temp_list = line.split("\t", 1)
+        return temp_list
 
 
 def tag_reducer():
@@ -36,10 +37,12 @@ def tag_reducer():
     current_cat = ""
     current_id_country_dict = {}
 
-    for category, message in read_map_output(sys.stdin):
+    for temp_list in read_map_output(sys.stdin):
+        category = temp_list[0]
+        message = temp_list[1]
         message_parts = message.split("|",1)
-        video_id = message_parts("|")[0]
-        country = message_parts("|")[1]
+        video_id = message_parts[0]
+        country = message_parts[1]
 
         if (current_cat != category) and current_cat != "":
 
