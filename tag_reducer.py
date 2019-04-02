@@ -9,35 +9,16 @@ def read_map_output(file):
     Output format: (key, value)
     """
     for line in file:
-        temp_list = line.strip().split("\t", 1)
-        yield temp_list[0], temp_list[1]
+        yield line.strip().split("\t", 1)
 
 
 def tag_reducer():
-    """ This mapper select tags and return the tag-owner information.
 
-    Note: Unlike normal hadoop which provide the reducer with key and a list of the values
-        e.g. tag1, (owner1, owner2...)
-    , hadoop streaming instead provide the reducer with sorted (key, value) lines
-        e.g. tag1, owner1
-             tag1, owner2
-             ...
-
-    Furthermore, unlike normal hadoop which calls the reducer for every key,
-    in hadoop streaming multiple keys maybe given to the reducer
-        e.g. tag1, owner1
-             tag1, owner2
-             tag2, owner2
-             tag2, owner3
-             tag3, owner1
-
-    Input format: tag \t owner
-    Output format: tag \t {owner=count}
-    """
     current_cat = ""
     current_id_country_dict = {}
+    file = open("test", "r")
 
-    for category, message in read_map_output(sys.stdin):
+    for category, message in read_map_output(file):
         message_parts = message.split("|",1)
         video_id = message_parts[0]
         country = message_parts[1]
